@@ -1,0 +1,40 @@
+{
+  "menu": [
+    {
+      "title": "About",
+      "url": "/about",
+      "submenu": []
+    },
+    {
+      "title": "Work",
+      "url": "/portfolio",
+      "submenu": [
+        {
+          "title": "With all feilds",
+          "url": "/portfolio/Package-design"
+        },
+        {
+          "title": "With Markdown",
+          "url": "/portfolio/Architecture-of-Web-Data"
+        },
+        {
+          "title": "List View",
+          "url": "/portfolio/Classic-workflow-designs"
+        },
+        {
+          "title": "Grid View",
+          "url": "/portfolio/Support-metrics-dashboard"
+        }
+      ]
+    },
+    {
+      "title": "Blog",
+      "url": "/blog",
+      "submenu": []
+    },
+    {
+      "title": "Contact",
+      "url": "#contact"
+    }
+  ]
+}

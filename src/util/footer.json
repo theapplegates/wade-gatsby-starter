@@ -1,0 +1,19 @@
+{
+  "title": "Lets connect :)",
+  "email": "wade@warren.co",
+  "socialIcons": [
+    {
+      "url": "/e",
+      "icon": "behance"
+    },
+    {
+      "title": "dfe",
+      "url": "/",
+      "icon": "instagram"
+    },
+    {
+      "url": "/",
+      "icon": "twitter"
+    }
+  ]
+}

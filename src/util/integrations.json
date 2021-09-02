@@ -1,0 +1,14 @@
+{
+  "ga": "UA-XXXXXXXXX-X",
+  "convertkit": {
+    "convertkitVisibility": "YES",
+    "formId": 123456,
+    "Title": "",
+    "subscribeDescription": "",
+    "submitText": ""
+  },
+  "disqus": {
+    "disqusVisibility": "YES",
+    "disqusUrl": "disqus-url"
+  }
+}

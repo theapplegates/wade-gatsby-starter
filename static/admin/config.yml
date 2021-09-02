@@ -1,0 +1,896 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+# Uncomment local_backend when you need to develop in your local
+local_backend: true # run 'npx netlify-cms-proxy-server' for local testing, install globally
+
+media_folder: "static/assets"
+public_folder: "../../../static/assets"
+
+editor:
+  preview: false
+
+collections:
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "src/content/pages/index.md"
+        fields:
+          - label: "Template"
+            name: "template"
+            widget: "hidden"
+            default: "index-page"
+          - label: "Slug"
+            name: "slug"
+            widget: "hidden"
+            default: "/"
+          - label: "Page Title"
+            name: "name"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "First name"
+                name: "firstName"
+                widget: "string"
+                default: ""
+                required: false
+              - label: "Last name"
+                name: "lastName"
+                widget: "string"
+                default: ""
+                required: false
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            hint: "This will be used for SEO"
+          - label: "CTA button"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            hint: "call to action button"
+            fields:
+              - name: "text"
+                label: "Text"
+                widget: "string"
+                default: ""
+                required: false
+              - name: "url"
+                label: "URL"
+                widget: "string"
+                default: ""
+                required: false
+
+          - label: "Customers"
+            name: "customers"
+            widget: "object"
+            collapsed: true
+            hint: "Add customers/companies you worked with"
+            fields:
+              - label: "Showcase Customers"
+                name: "customersVisibility"
+                widget: "select"
+                options: ["YES", "NO"]
+                default: "YES"
+                hint: "Do you want to show Customers ↓"
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                required: false
+                default: ""
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+                default: ""
+              - label: "customer images"
+                name: "customerImages"
+                widget: "list"
+                label_singular: "image"
+                collapsed: true
+                required: false
+                fields:
+                  - label: "customer name"
+                    name: "customerName"
+                    widget: "string"
+                    default: ""
+                    required: false
+                  - label: "customer image"
+                    name: "customerImage"
+                    widget: "image"
+                    default: "../../../static/assets/spacer.png"
+                    required: false
+          - label: "Testimonials"
+            name: "testimonialsContainer"
+            widget: "object"
+            collapsed: true
+            hint: "Add customers/clients feedback"
+            fields:
+              - label: "Testimonial Visibility"
+                name: "testimonialVisibility"
+                widget: "select"
+                options: ["YES", "NO"]
+                hint: "Do you want to show Testimonial ↓"
+              - label: "Testimonials"
+                name: "testimonials"
+                widget: "list"
+                create: true
+                required: false
+                fields:
+                  - label: "Name"
+                    name: "name"
+                    widget: "string"
+                    default: ""
+                    required: false
+                  - label: "Job Role"
+                    name: "jobRole"
+                    widget: "string"
+                    default: ""
+                    required: false
+                  - label: "Description"
+                    name: "description"
+                    widget: "text"
+                    default: ""
+                    required: false
+
+      - label: "About"
+        name: "about"
+        file: "src/content/pages/about.md"
+        fields:
+          - label: "Template"
+            name: "template"
+            widget: "hidden"
+            default: "about-page"
+          - label: "Slug"
+            name: "slug"
+            widget: "hidden"
+            default: "/about"
+          - label: "Page Title"
+            name: "title"
+            widget: "string"
+            default: ""
+            required: false
+          - label: "Description"
+            name: "aboutDescription"
+            widget: "markdown"
+            default: ""
+            required: false
+            hint: "This will be used for SEO"
+          - label: "Images"
+            name: "images"
+            widget: "object"
+            fields:
+              - label: "Featured Image Alignment"
+                name: "aboutAlign"
+                widget: "select"
+                options: ["left", "right"]
+                default: "left"
+                required: true
+              - label: "Image 1"
+                name: "aboutImage1"
+                widget: "image"
+                default: "../../../static/assets/spacer.png"
+                required: false
+              - label: "Image 2"
+                name: "aboutImage2"
+                widget: "image"
+                default: "../../../static/assets/spacer.png"
+                required: false
+              - label: "Image 3"
+                name: "aboutImage3"
+                widget: "image"
+                default: "../../../static/assets/spacer.png"
+                required: false
+
+          - label: "Experience"
+            name: "timelineContainer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Timeline Visible"
+                name: "hideTimeline"
+                widget: "boolean"
+                default: false
+                required: false
+              - label: "Section Title"
+                name: "timelineText"
+                widget: "string"
+                required: false
+                default: ""
+              - label: "Timeline"
+                name: "timeline"
+                widget: "list"
+                collapsed: true
+                fields:
+                  - label: "Company"
+                    name: "companyName"
+                    widget: "string"
+                    required: false
+                    default: ""
+                  - label: "Job Title"
+                    name: "jobRole"
+                    widget: "string"
+                    required: false
+                    default: ""
+                  - label: "Start Year"
+                    name: "startDate"
+                    widget: "date"
+                    dateFormat: "YYYY"
+                    format: "YYYY"
+                    default: "0000"
+                  - label: "Currently working here?"
+                    name: "working"
+                    widget: "boolean"
+                    default: false
+                    required: false
+                  - label: "End Year"
+                    name: "endDate"
+                    widget: "datetime"
+                    date_format: "YYYY"
+                    format: "YYYY"
+                    required: false
+                    default: "0000"
+                    hint: "If selected YES in previous option, leave this as default 0000"
+
+          - label: "Education"
+            name: "educationContainer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Showcase Education"
+                name: "hideEducation"
+                widget: "boolean"
+                default: false
+                required: false
+              - label: "Section Title"
+                name: "educationText"
+                widget: "string"
+                default: ""
+                required: false
+              - label: "Timeline"
+                name: "education"
+                widget: "list"
+                collapsed: true
+                fields:
+                  - label: "University Name"
+                    name: "universityName"
+                    widget: "string"
+                    default: ""
+                    required: false
+                  - label: "Group"
+                    name: "group"
+                    widget: "string"
+                    default: ""
+                    required: false
+                  - label: "Start Date"
+                    name: "startDate"
+                    widget: "date"
+                    dateFormat: "YYYY"
+                    format: "YYYY"
+                    default: "0000"
+                  - label: "Currently studying here?"
+                    name: "studying"
+                    widget: "boolean"
+                    required: false
+                    default: false
+                  - label: "End Date"
+                    name: "endDate"
+                    widget: "date"
+                    dateFormat: "YYYY"
+                    format: "YYYY"
+                    required: false
+                    default: "0000"
+                    hint: "If selected YES in previous option, leave this as default 0000"
+
+          - label: "Skills Container"
+            name: "skillsContainer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Showcase Skills"
+                name: "hideSkills"
+                widget: "boolean"
+                default: false
+                required: false
+              - label: "Section Title"
+                name: "skillsText"
+                widget: "string"
+                required: false
+                default: ""
+              - label: "Skills"
+                name: "skills"
+                widget: "text"
+                required: false
+                default: ""
+                hint: "Ex: Javascript ES6, React, Next.js, Python, Java"
+
+      - label: "Portfolio"
+        name: "portfolio"
+        file: "src/util/portfolio.json"
+        fields:
+          - label: "Page Title"
+            name: "title"
+            widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            hint: "This will be used for SEO"
+          - label: "Portfolio cta"
+            name: "cta"
+            widget: "string"
+          - label: "Portfolio Homepage Title"
+            name: "homeTitle"
+            widget: "string"
+
+      - label: "Blog"
+        name: "blog"
+        file: "src/util/blog.json"
+        fields:
+          - label: "Page Title"
+            name: "title"
+            widget: "string"
+          - label: "Homelist Blog Title"
+            name: "blogTitle"
+            widget: "string"
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            hint: "This will be used for SEO"
+            required: false
+          - label: "Blog cta"
+            name: "cta"
+            widget: "string"
+
+  - name: "portfolio" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Portfolio" # Used in the UI
+    label_singular: "Project" # Used in the UI, ie: 'New Portfolio'
+    description: >
+      'Create awesome content here.'
+    folder: "src/content/portfolios"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{year}}/{{month}}/{{day}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - label: "Template"
+        name: "template"
+        widget: "hidden"
+        default: "portfolio-page"
+      - label: "Page Title"
+        name: "title"
+        widget: "string"
+        tagname: "h1"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "This will be used for SEO"
+        required: false
+      - label: "Featured Image"
+        name: "featuredImage"
+        widget: "image"
+        tagname: ""
+        default: "../../../static/assets/spacer.png"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Main content goes here."
+        required: false
+
+      - label: List View
+        name: "listView"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Dont want to show List View"
+            name: "alignCardShow"
+            widget: "boolean"
+            default: false
+            required: false
+          - label: "List View"
+            name: "alignCards"
+            widget: "list"
+            label_singular: "Align Card"
+            collapsed: true
+            fields:
+              - label: "Description"
+                name: "alignCardDecription"
+                widget: "markdown"
+                default: ""
+                required: false
+              - label: "Image Alignment"
+                name: "cardAlign"
+                widget: "select"
+                options: ["left", "right", "center"]
+                default: "left"
+                required: true
+              - label: "Image"
+                name: "alignCardImage"
+                widget: "image"
+                default: "../../../static/assets/spacer.png"
+      - label: Cards View
+        name: "cardsView"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Dont want to show Grid View"
+            name: "CardShow"
+            widget: "boolean"
+            default: false
+            required: false
+          - label: "Grid View"
+            name: "cards"
+            widget: "list"
+            label_singular: "Cards"
+            collapsed: true
+            fields:
+              - label: "Image Caption"
+                name: "alignCardImgCaption"
+                widget: "string"
+                default: ""
+                required: false
+              - label: "Image"
+                name: "cardImages"
+                widget: "image"
+                default: "../../../static/assets/spacer.png"
+                required: false
+
+  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Posts" # Used in the UI
+    label_singular: "Post" # Used in the UI, ie: 'New Post'
+    description: "Create awesome content here."
+    folder: "src/content/posts"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{day}}/{{month}}/{{year}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - label: "Template"
+        name: "template"
+        widget: "hidden"
+        default: "blog-post"
+      - label: "Page Title"
+        name: "title"
+        widget: "string"
+        tagname: "h1"
+        default: ""
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "This will be used for SEO"
+        default: ""
+        required: false
+      - label: "Featured Image"
+        name: "featuredImage"
+        widget: "image"
+        tagname: ""
+        default: "../../../static/assets/spacer.png"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Main content goes here."
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Manage tags globally from Admin > Collections > Tags"
+        field:
+          {
+            label: "tag",
+            name: "tag",
+            widget: "relation",
+            collection: "tags",
+            search_fields: ["title"],
+            value_field: "title",
+            display_fields: ["title"],
+            default: "none",
+          }
+      - label: "category"
+        name: "categories"
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["title"]
+        value_field: "title"
+        display_fields: ["title"]
+        default: "0"
+        required: false
+        hint: "Manage categories globally from Admin > Collections > Categories"
+  - label: "Tags"
+    name: "tags"
+    label_singular: "Tag"
+    description: >
+      Create new tag here.
+    folder: "src/content/tags"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{year}}/{{month}}/{{day}}"
+    create: true
+    fields:
+      - label: "Template"
+        name: "template"
+        widget: "hidden"
+        default: "tags-page"
+      - label: "Tag Title"
+        name: "title"
+        widget: "string"
+        default: ""
+  - label: "Categories"
+    name: "categories"
+    label_singular: "Category"
+    description: >
+      Create new categories here.
+    folder: "src/content/categories"
+    summary: "{{title}} — {{year}}/{{month}}/{{day}}"
+    create: true
+    fields:
+      - label: "Template"
+        name: "template"
+        widget: "hidden"
+        default: "categories-page"
+      - label: "Category Title"
+        name: "title"
+        widget: "string"
+        default: ""
+        hint: "This will be used for SEO"
+  - name: "menu"
+    label: "Menu"
+    identifier_field: "name"
+    files:
+      - name: "headerMenu"
+        label: "Header Menu"
+        file: "src/util/headerMenu.json"
+        fields:
+          - label: "Menu"
+            name: "menu"
+            widget: "list"
+            collapsed: true
+            hint: 'Here you can add menu, Click on "Add menu"'
+            fields:
+              - name: "title"
+                label: "Title"
+                widget: "string"
+                required: true
+              - name: "url"
+                label: "url"
+                widget: "string"
+                required: true
+              - name: "submenu"
+                label: "Sub Menu"
+                widget: "list"
+                hint: 'Here you can add Sub Menu, Click on "Add sub menu"'
+                fields:
+                  - widget: "string"
+                    name: "title"
+                    label: "Title"
+                    required: true
+                  - widget: "string"
+                    name: "url"
+                    label: "url"
+                    required: true
+      - label: "Footer"
+        name: "footer"
+        file: "src/util/footer.json"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Email"
+            name: "email"
+            widget: "string"
+          - label: "Social Icons"
+            name: "socialIcons"
+            widget: "list"
+            collapsed: true
+            hint: 'Here you can add social icons, Click on "Add social icons"'
+            fields:
+              - name: "url"
+                label: "URL"
+                widget: "string"
+                required: true
+                hint: 'Paste the "URL" of your Social media'
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options:
+                  [
+                    "facebook",
+                    "twitter",
+                    "linkedin",
+                    "youtube",
+                    "instagram",
+                    "rss",
+                    "github",
+                    "telegram",
+                    "pinterest",
+                    "snapchat",
+                    "skype",
+                    "wordpress",
+                    "dribbble",
+                    "medium",
+                    "behance",
+                    "vk",
+                  ]
+                hint: "Select the Icon"
+
+  - label: "Appearance"
+    name: "appearance"
+    identifier_field: "name"
+    files:
+      - label: "Default Theme"
+        name: "themescolors"
+        file: "src/util/default-colors.json"
+        fields:
+          - label: "Background"
+            name: "background"
+            widget: "color"
+            allowInput: true
+          - label: "Text color"
+            name: "textColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Primary Color"
+            name: "primaryColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Secondary Color"
+            name: "SecondaryColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Button Color"
+            name: "buttonColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Button Text Color"
+            name: "buttonTextColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Portfolio Title Color"
+            name: "portfolioTitleColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Blog Bg Color"
+            name: "blogBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Blog Title Color"
+            name: "blogTitleColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Primary Background Color"
+            name: "primaryBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Menu Background Color"
+            name: "menuBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Border Color"
+            name: "borderColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Tag Color"
+            name: "tagColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+
+      - label: "Dark Theme"
+        name: "darkthemescolors"
+        file: "src/util/dark-theme-colors.json"
+        fields:
+          - label: "Background"
+            name: "background"
+            widget: "color"
+            allowInput: true
+          - label: "Text color"
+            name: "textColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Primary Color"
+            name: "primaryColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Secondary Color"
+            name: "SecondaryColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Button Color"
+            name: "buttonColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Button Text Color"
+            name: "buttonTextColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Portfolio Title Color"
+            name: "portfolioTitleColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Blog Bg Color"
+            name: "blogBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Blog Title Color"
+            name: "blogTitleColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Primary Background Color"
+            name: "primaryBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Menu Background Color"
+            name: "menuBgColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Border Color"
+            name: "borderColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+          - label: "Tag Color"
+            name: "tagColor"
+            widget: "color"
+            enableAlpha: true
+            allowInput: true
+      - label: "Site Layout"
+        name: "siteLayout"
+        file: "src/util/siteLayout.json"
+        fields:
+          - label: "Header Container"
+            name: "headerLayout"
+            widget: "string"
+          - label: "Site Container"
+            name: "containerLayout"
+            widget: "string"
+          - label: "Footer Container"
+            name: "footerLayout"
+            widget: "string"
+      - label: "Site Font"
+        name: "siteFont"
+        file: "src/util/siteFont.json"
+        fields:
+          - label: "Heading"
+            name: "heading"
+            widget: "string"
+          - label: "Body"
+            name: "body"
+            widget: "string"
+          - label: "Monospace"
+            name: "monospace"
+            widget: "string"
+  - name: "settings"
+    label: "Settings"
+    identifier_field: "name"
+    files:
+      - name: "general"
+        label: "General"
+        file: "src/util/site.json"
+        fields:
+          - label: "meta"
+            name: "meta"
+            widget: "object"
+            fields:
+              - widget: "string"
+                name: "title"
+                label: "Site Title"
+                required: true
+              - widget: "string"
+                name: "titleTemplate"
+                label: "Title Template"
+                default: "%s"
+                required: true
+              - widget: "string"
+                name: "siteUrl"
+                label: "Website URL"
+                required: true
+              - widget: "text"
+                name: "description"
+                label: "Description"
+                default: ""
+                required: false
+              - widget: "image"
+                name: "image"
+                label: "image"
+                default: "/assets/persona.png"
+              - widget: "image"
+                name: "iconimage"
+                label: "favicon"
+              - widget: "string"
+                name: "twitterUsername"
+                label: "Twitter"
+                required: false
+              - label: "Show Dark mode toggle"
+                name: "darkModeVisibility"
+                widget: "select"
+                options: ["YES", "NO"]
+
+      - name: "integrations"
+        label: "Integration"
+        file: "src/util/integrations.json"
+        fields:
+          - label: "Google Analytics Tracking ID"
+            name: "ga"
+            widget: "string"
+            hint: "Add your tracking ID, for example UA-XXXXXXXXX-X"
+          - label: "Convertkit"
+            name: "convertkit"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Show Convertkit"
+                name: "convertkitVisibility"
+                widget: "select"
+                options: ["YES", "NO"]
+                hint: "Do you want to show Convertkit"
+              - label: "Convertkit Form ID"
+                name: "formId"
+                widget: "number"
+                required: true
+                hint: "Add your form ID, for example 758775"
+              - label: "Subscribe text"
+                name: "Title"
+                widget: "string"
+                required: false
+              - label: "Description"
+                name: "subscribeDescription"
+                widget: "text"
+                required: false
+              - label: "Submit Text"
+                name: "submitText"
+                widget: "string"
+                required: false
+          - label: "Disqus"
+            name: "disqus"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Show Disqus"
+                name: "disqusVisibility"
+                widget: "select"
+                options: ["YES", "NO"]
+                hint: "Do you want to show Disqus"
+                required: true
+              - label: "Disqus Url"
+                name: "disqusUrl"
+                widget: "string"
+                hint: "Paste your Disqus url here"
+                required: false
