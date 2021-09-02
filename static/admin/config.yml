@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: your-username/your-repo-name
+  name: theapplegates
+  repo: theapplegates/wade-gatsby-starter
   branch: main
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
