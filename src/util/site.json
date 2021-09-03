@@ -1,12 +1,12 @@
 {
   "meta": {
     "iconimage": "../../../static/assets/wade-logo.png",
-    "siteUrl": "https://foundation.stackrole.com",
-    "twitterUsername": "@stackrole",
+    "siteUrl": "https://hardcore-swirles-541744.netlify.app",
+    "twitterUsername": "@papplegate",
     "darkModeVisibility": "YES",
     "logoImage": "../../../static/assets/persona-logo.png",
     "titleTemplate": "%s",
-    "title": "Wade Warren",
+    "title": "Living Life",
     "image": "../../../static/assets/wade-logo.png",
     "description": "A starter to launch your blazing fast personal website and a blog, Built with Gatsby and Netlify CMS. Made with ❤ by Stackrole"
   },
