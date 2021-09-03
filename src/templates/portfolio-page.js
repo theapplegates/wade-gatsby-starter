@@ -21,7 +21,7 @@ export const pageQuery = graphql`
         description
         featuredImage {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+						gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
           }
         }
         listView {
@@ -31,7 +31,7 @@ export const pageQuery = graphql`
             alignCardDecription
             alignCardImage {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+								gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
               }
             }
           }
@@ -42,7 +42,7 @@ export const pageQuery = graphql`
             alignCardImgCaption
             cardImages {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+								gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
               }
             }
           }

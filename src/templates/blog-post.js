@@ -41,7 +41,7 @@ export const pageQuery = graphql`
         categories
         featuredImage {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+						gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
           }
         }
       }

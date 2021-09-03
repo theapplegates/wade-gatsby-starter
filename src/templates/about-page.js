@@ -18,17 +18,17 @@ export const pageQuery = graphql`
           aboutAlign
           aboutImage1 {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+							gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
             }
           }
           aboutImage2 {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+							gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
             }
           }
           aboutImage3 {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+							gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AVIF, WEBP, AUTO])
             }
           }
         }
