@@ -1,5 +1,5 @@
 backend:
-  name: theapplegates
+  name: github
   repo: theapplegates/wade-gatsby-starter
   branch: main
   commit_messages:
